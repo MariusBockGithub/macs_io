@@ -1,0 +1,16 @@
+get_filename_component(myDir ${CMAKE_CURRENT_LIST_FILE} PATH) # get the directory where I myself am
+get_filename_component(rootDir ${myDir}/@relInstallDir@ ABSOLUTE) # get the chosen install prefix
+
+# set the version of myself
+set(MACS_IO_VERSION_MAJOR @MACS_IO_VERSION_MAJOR@)
+set(MACS_IO_VERSION_MINOR @MACS_IO_VERSION_MINOR@)
+set(MACS_IO_VERSION ${macs_io_VERSION_MAJOR}.${MACS_IO_VERSION_MINOR} )
+
+# what is my include directory
+set(MACS_IO_INCLUDES "${rootDir}/@INCLUDE_INSTALL_DIR@")
+
+# import the exported targets
+include(${myDir}/macs_ioTargets.cmake)
+
+# set the expected library variable
+set(MACS_IO_LIBRARIES macs_io)
