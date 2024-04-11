@@ -24,16 +24,16 @@ add_library(macs_io STATIC
 )
 
 if (BUILD_PYTHON)
-	Python3_add_library(macs_io_python_old src/macs_io_python.cpp)
-	target_link_libraries(macs_io_python_old PRIVATE pybind11::headers)
-	set_target_properties(macs_io_python_old PROPERTIES
+	Python3_add_library(macs_io_python src/macs_io_python.cpp)
+	target_link_libraries(macs_io_python PRIVATE pybind11::headers)
+	set_target_properties(macs_io_python PROPERTIES
 			VISIBILITY_INLINES_HIDDEN ON
-			OUTPUT_NAME macs_io_python_old)
+			OUTPUT_NAME macs_io_python)
 
 
 	#target_link_libraries(macs_io_python P pybind11::headers)
-	target_link_libraries(macs_io_python_old PUBLIC Python3::Python)
-	target_link_libraries(macs_io_python_old PUBLIC macs_io)
+	target_link_libraries(macs_io_python PUBLIC Python3::Python)
+	target_link_libraries(macs_io_python PUBLIC macs_io)
 endif()
 
 target_include_directories(macs_io 
